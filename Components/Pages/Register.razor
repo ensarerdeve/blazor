@@ -1,0 +1,66 @@
+@page "/register"
+@inject HttpClient http
+
+<PageTitle>Registration</PageTitle>
+
+<h1>Fill For Registration</h1>
+
+<EditForm Model="@registration" OnSubmit="@Submit" FormName="RegistrationForm">
+    <div>
+        <label>Name:</label>
+        <InputText @bind-Value="registration.Name" />
+    </div>
+    <div>
+        <label>Surname:</label>
+        <InputText @bind-Value="registration.Surname" />
+    </div>
+    <div>
+        <label>Username:</label>
+        <InputText @bind-Value="registration.Username" />
+    </div>
+    <div>
+        <label>Email:</label>
+        <InputText @bind-Value="registration.Email" />
+    </div>
+    <div>
+        <label>Phone:</label>
+        <InputText @bind-Value="registration.Phone" />
+    </div>
+    <div>
+        <label>Age:</label>
+        <InputNumber @bind-Value="registration.Age" />
+    </div>
+    <button type="submit">Register</button>
+</EditForm>
+
+
+@code{
+    public class UserDto
+    {
+        [SupplyParameterFromForm]
+        public string Name { get; set; }
+        [SupplyParameterFromForm]
+        public string Surname { get; set; }
+        [SupplyParameterFromForm]
+        public string Username { get; set; }
+        [SupplyParameterFromForm]
+        public string Email { get; set; }
+        [SupplyParameterFromForm]
+        public string Phone { get; set; }
+        [SupplyParameterFromForm]
+        public decimal Age { get; set; }
+    }
+
+    [SupplyParameterFromForm(FormName = "RegistrationForm")]
+
+    private UserDto registration = new UserDto();
+
+    private async Task Submit()
+    {
+        var url = "http://localhost:5234/";
+        Console.WriteLine($"Name: {UserDto.ReferenceEquals}, Surname: {registration.Surname}");
+
+        await http.PostAsJsonAsync(url, registration);
+    }
+
+}
