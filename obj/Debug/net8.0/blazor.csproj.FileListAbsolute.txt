@@ -27,3 +27,4 @@
 /Users/ensarerdeve/Documents/VSC Projects/blazor/obj/Debug/net8.0/blazor.pdb
 /Users/ensarerdeve/Documents/VSC Projects/blazor/obj/Debug/net8.0/blazor.genruntimeconfig.cache
 /Users/ensarerdeve/Documents/VSC Projects/blazor/obj/Debug/net8.0/ref/blazor.dll
+/Users/ensarerdeve/Documents/VSC Projects/blazor/obj/Debug/net8.0/blazor.sourcelink.json
